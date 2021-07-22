@@ -1,6 +1,45 @@
+/* 
+logo colours
+#ffc90e light yellow
+#ffae00 dark yellow
+#c3c3c3 light grey
+#b4b4b4 dark grey
+*/
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: #b4b4b4;
+}
+
+hr{
+    margin: 30px;
+}
+
 #mainDiv{
+    width: 50%;
     background-color: #ddd;
     padding:20px;
     margin: 10px;
     height: 150vh;
+    box-shadow: 5px 5px 15px #555;
+    border: 3px solid #f0a000;
+}
+@media only screen and (max-width: 700px) {
+    #mainDiv {
+        width: 80%;
+    }
+    body{
+        font-size: 150%;
+    }
+}
+
+#logo{
+    width: 15%;
+    height: 15%;
+}
+
+#logoDiv{
+    display: flex;
+    justify-content: center;
 }
