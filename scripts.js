@@ -28,3 +28,9 @@ for (i = 0; i < coll.length; i++) {
     setTimeout(()=>{child.style.maxHeight="55vh"; child.style.top=`${yPos}px`}, 1300);
   });
 }
+
+let wide = true;
+const testContainer = document.getElementById("testContainer")
+document.addEventListener("click", ()=>{
+  wide = !wide;
+  testContainer.style.width = (10+wide*40)+"vw"; console.log("changed width")})
