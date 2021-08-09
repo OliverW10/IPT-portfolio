@@ -33,4 +33,47 @@ let wide = true;
 const testContainer = document.getElementById("testContainer")
 document.addEventListener("click", ()=>{
   wide = !wide;
-  testContainer.style.width = (10+wide*40)+"vw"; console.log("changed width")})
+  testContainer.style.width = (10+wide*40)+"vw"; console.log("changed width")
+})
+
+
+
+let outerDiv = document.getElementById("outerPage");
+let scroller = document.getElementById("scroller");
+
+let mainDiv = document.getElementById("mainDiv");
+
+scroller.style.height = mainDiv.offsetHeight*1.1;
+console.log(mainDiv)
+console.log(mainDiv.offsetHeight);
+
+
+let lastScroll = 0; // scroll value on the last frame
+let smoothness = 20; // how much to smooth the scrolling higher is less smoothing
+
+let lastTick = performance.now()
+function updateScroll(time){
+  let delta = time=lastTick
+  lastTick = time
+
+  idealScroll = -window.innerHeight/2-window.scrollY
+
+  // interpolates between lastScroll and ideaScroll relative to delta
+  setScroll = lastScroll*(1-smoothness/delta)  +  idealScroll*(smoothness/delta);
+  outerDiv.style.transform = `translate(0%, ${setScroll}px)`;
+  requestAnimationFrame(updateScroll)
+  lastScroll = setScroll;
+}
+
+requestAnimationFrame(updateScroll)
+
+
+let sliderVal = document.getElementById("sliderVal")
+let slider = document.getElementById("slider")
+slider.oninput = function (){
+  sliderVal.innerHTML = this.value;
+  smoothness = this.value;
+}
+
+let overlay = document.getElementById("overlay")
+window.addEventListener("load", ()=>{console.log("loaded");overlay.style.opacity="0"})
