@@ -300,7 +300,6 @@ hr {
 
 .container:hover .content{
     cursor: pointer;
-    color: #666;
     text-decoration-line: underline;
 }
 
