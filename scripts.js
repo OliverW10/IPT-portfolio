@@ -31,7 +31,7 @@ for (i = 0; i < coll.length; i++) {
 
 let wide = true;
 const testContainer = document.getElementById("testContainer")
-document.addEventListener("click", ()=>{
+testContainer.addEventListener("click", ()=>{
   wide = !wide;
   testContainer.style.width = (10+wide*40)+"vw"; console.log("changed width")
 })
@@ -49,7 +49,18 @@ console.log(mainDiv.offsetHeight);
 
 
 let lastScroll = 0; // scroll value on the last frame
-let smoothness = 20; // how much to smooth the scrolling higher is less smoothing
+let smoothness = 20; // how much to smooth the scrolling higher is less smoothing, gets overridden by slider default value
+
+let isPhone;
+function checkSize(){
+  if (window.matchMedia("(orientation: portrait)").matches) {
+    isPhone = true;
+  } else {
+    isPhone = false;
+  }
+  console.log(isPhone)
+}
+window.onresize = checkSize
 
 let lastTick = performance.now()
 function updateScroll(time){
@@ -57,14 +68,16 @@ function updateScroll(time){
   lastTick = time
 
   idealScroll = -window.innerHeight/2-window.scrollY
-
-  // interpolates between lastScroll and ideaScroll relative to delta
-  setScroll = lastScroll*(1-smoothness/delta)  +  idealScroll*(smoothness/delta);
-  outerDiv.style.transform = `translate(0%, ${setScroll}px)`;
+  if(!isPhone){
+    // interpolates between lastScroll and ideaScroll relative to delta
+    setScroll = lastScroll*(1-smoothness/delta)  +  idealScroll*(smoothness/delta);
+    outerDiv.style.transform = `translate(0%, ${setScroll}px)`;
+    lastScroll = setScroll;
+  }else{
+    outerDiv.style.transform = `translate(0%, ${idealScroll}px)`;
+  }
   requestAnimationFrame(updateScroll)
-  lastScroll = setScroll;
 }
-
 requestAnimationFrame(updateScroll)
 
 
@@ -74,6 +87,8 @@ slider.oninput = function (){
   sliderVal.innerHTML = this.value;
   smoothness = this.value;
 }
+
+slider.oninput()
 
 let overlay = document.getElementById("overlay")
 window.addEventListener("load", ()=>{console.log("loaded");overlay.style.opacity="0"})

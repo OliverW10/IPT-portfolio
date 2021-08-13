@@ -43,18 +43,10 @@ hr{
     background-color: #ddd;
     padding:20px;
     margin: 10px;
-    height: 150vh;
+    height: 200vh;
     box-shadow: 5px 5px 15px #555;
     border: 3px solid #f0a000;
     overflow-y: hidden;
-}
-@media only screen and (orientation: portrait) {
-    #mainDiv {
-        width: 80%;
-    }
-    body{
-        font-size: 150%;
-    }
 }
 
 #logo{
@@ -84,16 +76,14 @@ hr{
     transition: width 1s ease 0.5s, opacity 0.3s ease;
     /* display:block; */
     /* text-align: center; */
+    opacity: 1;
 }
 
 .projectItemCard{
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.projectItem:hover{
-    opacity: 0.7;
+    align-items: center; */
+    opacity: 1;
 }
 
 .projectItem:active{
@@ -113,6 +103,7 @@ hr{
     background-color: blue;
     display: block;
     transition: all 1s ease;
+    opacity: 1 !important;
 }
 
 #testContainer{
@@ -167,6 +158,10 @@ hr{
     opacity: 0.7;
 }
 
+#slider:hover{
+    cursor: pointer;
+}
+
 #overlay{
     position: fixed;
     background-color: black;
@@ -178,4 +173,30 @@ hr{
     transition: opacity 3s;
     z-index: 3;
     pointer-events: none;
+}
+
+#mainDiv > p{
+    margin-top: 3px;
+    margin-bottom: 1em;
+    font-size: 90%;
+}
+
+#mainDiv > h3{
+    margin: 0;
+}
+
+@media only screen and (orientation: portrait) {
+    #mainDiv {
+        width: 80%;
+    }
+    body{
+        font-size: 150%;
+    }
+    #ghLogo{
+        width: 100px;
+        height: 100px;
+    }
+    #smoothnessSlider{
+        display: none;
+    }
 }
