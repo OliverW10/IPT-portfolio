@@ -1,0 +1,60 @@
+<head>
+    <link rel="icon" 
+      type="image/x-icon" 
+      href="./favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <title>Olivers Portfolio</title>
+</head>
+    <div id="overlay"></div>
+    <div id="scroller"></div>
+    <div id="outerPage">
+        <div id="mainDiv">
+            <div id="logoDiv"><img title="My logo" id="logo" src="ipt-logo.png" alt="Logo with star"></div>
+            <hr>
+            <h1>My portfolio</h1>
+            <h3>Skills</h3>
+            <ul>
+                <li>None</li>
+            </ul>
+            <h3>Examples of work</h3>
+            <h6>Click to expand</h6>
+            <div id="projectContainer">
+                <div class="projectItem noselect">
+                    <div className="projectItemCard">Example 1</div>
+                    <div class="projectExpandable">More info on Example 1</div>
+                </div>
+                <div class="projectItem noselect">
+                    <div className="projectItemCard">Example 2</div>
+                    <div class="projectExpandable">More info on Example 2</div>
+                </div>
+                <div class="projectItem noselect">
+                    <div className="projectItemCard">Example 3</div>
+                    <div class="projectExpandable">More info on Example 3</div>
+                </div>
+                <div class="projectItem noselect">
+                    <div className="projectItemCard">Example 4</div>
+                    <div class="projectExpandable">More info on Example 4</div>
+                </div>
+                <div class="projectItem noselect">
+                    <div className="projectItemCard">Example 5</div>
+                    <div class="projectExpandable">More info on Example 5</div>
+                </div>
+            </div>
+            <div id="testContainer">
+                <div class="testItem"></div>
+                <div class="testItem"></div>
+                <div class="testItem"></div>
+                <div class="testItem"></div>
+                <div class="testItem"></div>
+                <div class="testItem"></div>
+            </div>
+        </div>
+    </div>
+    <a id="ghLink" href="https://github.com/oliverw10/ipt-portfolio"><img id="ghLogo" src="images/gh.png" title="Go to Github repo" alt="Github logo"></a>
+    <label id="smoothnessSlider">
+        Smoothing:<br>
+        <input type="range" min="0.5" max="50" value="20" id="slider" >
+        <span id="sliderVal">20</span>
+    </label>
+    <script src="scripts.js"></script>
+</body>
