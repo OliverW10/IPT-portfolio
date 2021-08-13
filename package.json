@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "prebuild": "python prebuild.py",
-    "run-minify": "minify scripts.js > build/scripts.js && minify styles.css > build/styles.css",
+    "run-minify": "minify scripts.js > build/scripts.js",
     "run-versionify": "python versionifier.py",
     "build": "npm run run-minify && npm run run-versionify",
     "predeploy":"npm run build",
