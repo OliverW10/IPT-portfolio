@@ -1,10 +1,9 @@
 <head>
-    <link rel="icon" 
-      type="image/x-icon" 
-      href="./favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <title>Olivers Portfolio</title>
 </head>
+
 <body>
     <div id="overlay"></div>
     <div id="scroller"></div>
@@ -43,20 +42,16 @@
                 </div>
             </div>
             <hr>
-            <div id="testContainer">
-                <div class="testItem"></div>
-                <div class="testItem"></div>
-                <div class="testItem"></div>
-                <div class="testItem"></div>
-                <div class="testItem"></div>
-                <div class="testItem"></div>
+            <div class="timeline">
+                <include src="versions.html">Loading...</include>
             </div>
         </div>
     </div>
-    <a id="ghLink" href="https://github.com/oliverw10/ipt-portfolio"><img id="ghLogo" src="images/gh.png" title="Go to Github repo" alt="Github logo"></a>
+    <a id="ghLink" href="https://github.com/oliverw10/ipt-portfolio"><img id="ghLogo" src="images/gh.png"
+            title="Go to Github repo" alt="Github logo"></a>
     <label id="smoothnessSlider">
         Smoothing:<br>
-        <input type="range" min="1" max="50" value="15" id="slider" >
+        <input type="range" min="1" max="50" value="15" id="slider">
         <span id="sliderVal">Initial</span>
     </label>
     <script src="scripts.js"></script>

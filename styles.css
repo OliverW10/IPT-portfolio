@@ -7,59 +7,65 @@ logo colours
 */
 
 .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
-body{
+body {
     background-color: #b4b4b4;
     font-family: Arial;
     /* overflow-y: hidden; */
 }
 
-hr{
+hr {
     margin: 30px;
 }
 
-#outerPage{
+#outerPage {
     display: flex;
     justify-content: center;
     margin: 0;
     padding: 0;
     position: fixed;
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     top: 55%;
     /* transition: transform 0.5s; */
     transform: translate(0%, 20%)
 }
 
-#mainDiv{
+#mainDiv {
     width: 60%;
     background-color: #ddd;
-    padding:20px;
+    padding: 20px;
     margin: 10px;
-    height: 200vh;
+    /* height: 200vh; */
     box-shadow: 5px 5px 15px #555;
     border: 3px solid #f0a000;
     overflow-y: hidden;
 }
 
-#logo{
+#logo {
     width: 10vw;
     height: 10vw;
 }
 
-#logoDiv{
+#logoDiv {
     display: flex;
     justify-content: center;
 }
 
-#projectContainer{
+#projectContainer {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -67,7 +73,7 @@ hr{
     transition: width 1s;
 }
 
-.projectItem{
+.projectItem {
     width: 100%;
     height: 10vh;
     background: red;
@@ -79,18 +85,18 @@ hr{
     opacity: 1;
 }
 
-.projectItemCard{
+.projectItemCard {
     /* display: flex;
     justify-content: center;
     align-items: center; */
     opacity: 1;
 }
 
-.projectItem:active{
+.projectItem:active {
     opacity: 0.5;
 }
 
-.projectExpandable{
+.projectExpandable {
     height: 55vh;
     width: 40vw;
     max-width: 0;
@@ -106,14 +112,15 @@ hr{
     opacity: 1 !important;
 }
 
-#testContainer{
+#testContainer {
     display: flex;
     flex-wrap: wrap;
     transition: all 1s;
     /* background-color: cadetblue; */
     justify-content: center;
 }
-.testItem{
+
+.testItem {
     min-width: 80px;
     height: 100px;
     background-color: aqua;
@@ -121,29 +128,28 @@ hr{
     transition: all 1s;
 }
 
-#ghLogo{
-    width:50px;
-    height:50px;
-    
+#ghLogo {
+    width: 50px;
+    height: 50px;
     opacity: 0.6;
     transition: opacity 0.3s;
 }
 
-#ghLogo:hover{
+#ghLogo:hover {
     opacity: 1;
 }
 
-#ghLink{
+#ghLink {
     position: fixed;
-    bottom:5px;
+    bottom: 5px;
     right: 5px;
 }
 
-#scroller{
-    height: 300vh;
+#scroller {
+    /* height: 300vh; */
 }
 
-#smoothnessSlider{
+#smoothnessSlider {
     position: fixed;
     bottom: 5px;
     left: 5px;
@@ -154,15 +160,15 @@ hr{
     border-radius: 4px;
 }
 
-#smoothnessSlider:hover{
+#smoothnessSlider:hover {
     opacity: 0.7;
 }
 
-#slider:hover{
+#slider:hover {
     cursor: pointer;
 }
 
-#overlay{
+#overlay {
     position: fixed;
     background-color: black;
     width: 100vw;
@@ -175,28 +181,171 @@ hr{
     pointer-events: none;
 }
 
-#mainDiv > p{
+#mainDiv>p {
     margin-top: 3px;
     margin-bottom: 1em;
     font-size: 90%;
 }
 
-#mainDiv > h3{
+#mainDiv>h3 {
     margin: 0;
+}
+
+
+/* https://www.w3schools.com/howto/howto_css_timeline.asp */
+
+
+/* from here to 350 */
+
+* {
+    box-sizing: border-box;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #aaa;
+    top: 0;
+    bottom: 0;
+    left: 20%;
+    margin-left: -10px;
+}
+
+
+/* Container around content */
+.container {
+    padding: 10px 30px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+
+/* The circles on the timeline */
+.container::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: -100px;
+    background-color: #aaa;
+    /* border: 3px solid #f0a000; */
+    top: 20px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Place the container to the right */
+.right {
+    left: 20%;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 20px;
+    border: medium solid #aaa;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #aaa transparent transparent;
+}
+
+
+/* Fix the circle for containers on the right side */
+.right::after {
+    left: -16px;
+}
+
+
+/* The actual content */
+.content {
+    padding: 10px 30px 15px;
+    background-color: #aaa;
+    position: relative;
+    border-radius: 6px;
+    color: #111;
+    text-decoration: none;
+}
+
+.outerLink:link {
+    color: #111;
+    text-decoration: none;
+
+}
+  
+/* visited link */
+.outerLink:visited {
+    color: #111;
+    text-decoration: none;
+}
+
+.versionsName{
+    text-decoration-line: none;
+}
+  
+
+.container:hover .content{
+    cursor: pointer;
+    color: #666;
+    text-decoration-line: underline;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+    /* Place the timelime to the left */
+    .timeline::after {
+        left: 31px;
+    }
+    /* Full-width containers */
+    .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    /* Make sure that all arrows are pointing leftwards */
+    .container::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+    }
+    /* Make sure all circles are at the same spot */
+    .left::after,
+    .right::after {
+        left: 15px;
+    }
+    /* Make all right containers behave like the left ones */
+    .right {
+        left: 0%;
+    }
 }
 
 @media only screen and (orientation: portrait) {
     #mainDiv {
         width: 80%;
     }
-    body{
+    body {
         font-size: 150%;
     }
-    #ghLogo{
+    #ghLogo {
         width: 100px;
         height: 100px;
     }
-    #smoothnessSlider{
+    #smoothnessSlider {
         display: none;
     }
 }

@@ -1,3 +1,8 @@
+
+
+let overlay = document.getElementById("overlay")
+window.addEventListener("load", ()=>{console.log("loaded");overlay.style.opacity="0"})
+
 var coll = document.getElementsByClassName("projectItem");
 var i;
 
@@ -29,23 +34,11 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
-let wide = true;
-const testContainer = document.getElementById("testContainer")
-testContainer.addEventListener("click", ()=>{
-  wide = !wide;
-  testContainer.style.width = (10+wide*40)+"vw"; console.log("changed width")
-})
-
-
 
 let outerDiv = document.getElementById("outerPage");
 let scroller = document.getElementById("scroller");
 
 let mainDiv = document.getElementById("mainDiv");
-
-scroller.style.height = mainDiv.offsetHeight*1.1;
-console.log(mainDiv)
-console.log(mainDiv.offsetHeight);
 
 
 let lastScroll = 0; // scroll value on the last frame
@@ -60,6 +53,7 @@ function checkSize(){
   }
   console.log(isPhone)
 }
+checkSize()
 window.onresize = checkSize
 
 let lastTick = performance.now()
@@ -87,8 +81,29 @@ slider.oninput = function (){
   sliderVal.innerHTML = this.value;
   smoothness = this.value;
 }
+sliderVal.innerHTML = slider.value;
+smoothness = slider.value;
 
-slider.oninput()
+// https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file
+// embedes another html file
+(() => {
+  const includes = document.getElementsByTagName('include');
+  [].forEach.call(includes, i => {
+      let filePath = i.getAttribute('src');
+      fetch(filePath).then(file => {
+          file.text().then(content => {
+              i.insertAdjacentHTML('afterend', content);
+              i.remove();
+              setDocHeight()
+          });
+      });
+  });
+})();
 
-let overlay = document.getElementById("overlay")
-window.addEventListener("load", ()=>{console.log("loaded");overlay.style.opacity="0"})
+function setDocHeight(){
+  const overallHeight = outerDiv.clientHeight;
+  // scroller.style.height = overallHeight;
+  scroller.style.height = overallHeight*1.1;
+  // console.log(mainDiv)
+  // console.log(overallHeight);
+}
