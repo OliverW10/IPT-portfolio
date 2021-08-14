@@ -29,8 +29,9 @@ for (i = 0; i < coll.length; i++) {
     this.style.width = "110%"; // make this card slightly wider
     let yPos = getYPos(parent)-getYPos(child); // gets the relative offset that would be the top of the projectContainer
     child.style.top = 0; // sets the collabsable to start at where its card is
+    let maxHeight = document.getElementById("projectContainer").scrollHeight;
     setTimeout(()=>{child.style.maxWidth="50vw"}, 700); // in 700ms make collabsable wide
-    setTimeout(()=>{child.style.maxHeight="55vh"; child.style.top=`${yPos}px`}, 1300);
+    setTimeout(()=>{child.style.maxHeight=`${maxHeight}px`; child.style.top=`${yPos}px`}, 1300);
   });
 }
 
