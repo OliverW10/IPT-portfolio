@@ -53,6 +53,7 @@ hr {
     box-shadow: 5px 5px 15px #555;
     border: 3px solid #f0a000;
     overflow-y: hidden;
+    border-radius: 10px;
 }
 
 #logo {
@@ -84,6 +85,7 @@ hr {
     transition: width 1s ease 0.5s, opacity 0.3s ease;
     opacity: 1;
     box-shadow: 3px 5px 6px #888;
+    border-radius: 5px;
 }
 
 .projectItemCard {
@@ -132,10 +134,6 @@ hr {
     position: fixed;
     bottom: 5px;
     right: 5px;
-}
-
-#scroller {
-    /* height: 300vh; */
 }
 
 #smoothnessSlider {
