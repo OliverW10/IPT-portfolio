@@ -60,7 +60,7 @@ function doThings(){
 
   let lastTick = performance.now()
   function updateScroll(time){
-    let delta = time=lastTick
+    let delta = time-lastTick
     lastTick = time
 
     idealScroll = -window.innerHeight/2-window.scrollY
@@ -81,10 +81,16 @@ function doThings(){
   let slider = document.getElementById("slider")
   slider.oninput = function (){
     sliderVal.innerHTML = this.value;
-    smoothness = this.value;
-  }
+    if(this.value == 0){
+      smoothness = 10;
+    }else{
+      smoothness = 10/this.value;
+    }
+    console.log(smoothness);
+}
   sliderVal.innerHTML = slider.value;
-  smoothness = slider.value;
+  smoothness = 10/slider.value;
+  console.log(smoothness);
 
   // https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file
   // embedes another html file
