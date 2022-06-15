@@ -1,0 +1,26 @@
+{
+  "name": "ipt-portfolio",
+  "version": "1.0.0",
+  "description": "[View the website here](https://oliverw10.github.io/IPT-portfolio/)",
+  "main": "server.js",
+  "scripts": {
+    "prebuild": "python3 prebuild.py",
+    "build": "python3 versionifier.py",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OliverW10/IPT-portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OliverW10/IPT-portfolio/issues"
+  },
+  "homepage": "https://github.com/OliverW10/IPT-portfolio#readme",
+  "dependencies": {
+    "gh-pages": "^3.2.3",
+    "minify": "^7.0.2"
+  }
+}
