@@ -1,10 +1,11 @@
-/* 
-logo colours
-#ffc90e light yellow
-#ffae00 dark yellow
-#c3c3c3 light grey
-#b4b4b4 dark grey
-*/
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
 
 .noselect {
     -webkit-touch-callout: none;
@@ -21,49 +22,68 @@ logo colours
     /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
-body {
-    background-color: #b4b4b4;
-    font-family: Arial;
-    /* overflow-y: hidden; */
-}
-
 hr {
     margin: 30px;
 }
 
-#outerPage {
+aside {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    left: 15px;
+    top: 15px;
+    /* margin-top: 20vh; */
+    border: 2px solid black;
+    z-index: 1;
+    width: fit-content;
+}
+
+aside a {
+    color: black;
+    text-decoration: none;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+aside a:hover {
+    text-decoration: underline;
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+#content-outer {
     display: flex;
     justify-content: center;
-    margin: 0;
+    position: relative;
+    top: -100px;
+    width: 100%;
     padding: 0;
+    margin: 0;
+    /* top: -100px */
+}
+
+#content{
+    width: 65%;
+}
+
+#gh-link {
     position: fixed;
-    width: 100vw;
-    /* height: 100vh; */
-    top: 55%;
-    /* transition: transform 0.5s; */
-    transform: translate(0%, 20%)
+    bottom: 5px;
+    right: 5px;
 }
 
-#mainDiv {
-    width: 60%;
-    background-color: #ddd;
-    padding: 20px;
-    margin: 10px;
-    /* height: 200vh; */
-    box-shadow: 5px 5px 15px #555;
-    border: 3px solid #f0a000;
-    overflow-y: hidden;
-    border-radius: 10px;
+#gh-logo {
+    width: 50px;
+    height: 50px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
 }
 
-#logo {
-    width: 10vw;
-    height: 10vw;
-}
-
-#logoDiv {
-    display: flex;
-    justify-content: center;
+#gh-logo:hover {
+    opacity: 1;
 }
 
 #projectContainer {
@@ -77,21 +97,15 @@ hr {
 .projectItem {
     width: 100%;
     height: 10vh;
-    background: #bbb;
     margin: 1.5vh;
     padding: 1%;
     text-align: center;
     margin-left: 0;
     transition: width 1s ease 0.5s, opacity 0.3s ease;
-    opacity: 1;
-    box-shadow: 3px 5px 6px #888;
-    border-radius: 5px;
+    border: 2px solid black;
 }
 
 .projectItemCard {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     opacity: 1;
 }
 
@@ -100,238 +114,30 @@ hr {
 }
 
 .projectItem:hover{
-    filter: brightness(90%);
+    border-style: dashed;
 }
 
 .projectExpandable {
     height: 55vh;
     width: 40vw;
     max-width: 0;
-    max-height: 5vh;
+    /* max-height: 5vh; */
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: scroll;
     position: relative;
     left: 105%;
     top: 0%;
-    background-color: blue;
     display: block;
+    border: 2px solid black;
     transition: all 1s ease;
     opacity: 1 !important;
 }
 
-#ghLogo {
-    width: 50px;
-    height: 50px;
-    opacity: 0.6;
-    transition: opacity 0.3s;
-}
-
-#ghLogo:hover {
-    opacity: 1;
-}
-
-#ghLink {
-    position: fixed;
-    bottom: 5px;
-    right: 5px;
-}
-
-#smoothnessSlider {
-    position: fixed;
-    bottom: 5px;
-    left: 5px;
-    /* font-size: smaller; */
-    background-color: rgba(255, 255, 255, 1);
-    opacity: 0.6;
-    padding: 5px;
-    border-radius: 4px;
-}
-
-#smoothnessSlider:hover {
-    opacity: 0.7;
-}
-
-#slider:hover {
-    cursor: pointer;
-}
-
-#overlay {
-    position: fixed;
-    background-color: black;
-    width: 100vw;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    opacity: 1;
-    transition: opacity 3s;
-    z-index: 3;
-    pointer-events: none;
-}
-
-#mainDiv>p {
-    margin-top: 3px;
-    margin-bottom: 1em;
-    font-size: 90%;
-}
-
-#mainDiv>h3 {
-    margin: 0;
-}
-
-
-/* https://www.w3schools.com/howto/howto_css_timeline.asp */
-
-
-/* from here to 350 */
-
-* {
-    box-sizing: border-box;
-}
-
-/* The actual timeline (the vertical ruler) */
-.timeline {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-
-/* The actual timeline (the vertical ruler) */
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    background-color: #aaa;
-    top: 0;
-    bottom: 0;
-    left: 20%;
-    margin-left: -10px;
-}
-
-
-/* Container around content */
-.container {
-    padding: 10px 30px;
-    position: relative;
-    background-color: inherit;
-    width: 50%;
-}
-
-
-/* The circles on the timeline */
-.container::after {
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    left: -100px;
-    background-color: #aaa;
-    /* border: 3px solid #f0a000; */
-    top: 20px;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-/* Place the container to the right */
-.right {
-    left: 20%;
-}
-
-/* Add arrows to the right container (pointing left) */
-.right::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 22px;
-    width: 0;
-    z-index: 1;
-    left: 20px;
-    border: medium solid #aaa;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #aaa transparent transparent;
-}
-
-
-/* Fix the circle for containers on the right side */
-.right::after {
-    left: -16px;
-}
-
-
-/* The actual content */
-.content {
-    padding: 10px 30px 15px;
-    background-color: #aaa;
-    position: relative;
-    border-radius: 6px;
-    color: #111;
-    text-decoration: none;
-}
-
-.outerLink:link {
-    color: #111;
-    text-decoration: none;
-
-}
-  
-/* visited link */
-.outerLink:visited {
-    color: #111;
-    text-decoration: none;
-}
-
-.versionsName{
-    text-decoration-line: none;
-}
-  
-
-.container:hover .content{
-    cursor: pointer;
-    text-decoration-line: underline;
-}
-
-/* Media queries - Responsive timeline on screens less than 600px wide */
-@media screen and (max-width: 600px) {
-    /* Place the timelime to the left */
-    .timeline::after {
-        left: 31px;
-    }
-    /* Full-width containers */
-    .container {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-    }
-    /* Make sure that all arrows are pointing leftwards */
-    .container::before {
-        left: 60px;
-        border: medium solid white;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent white transparent transparent;
-    }
-    /* Make sure all circles are at the same spot */
-    .left::after,
-    .right::after {
-        left: 15px;
-    }
-    /* Make all right containers behave like the left ones */
-    .right {
-        left: 0%;
-    }
-}
-
-@media only screen and (orientation: portrait) {
-    #mainDiv {
-        width: 80%;
-    }
-    body {
-        font-size: 150%;
-    }
-    #ghLogo {
-        width: 100px;
-        height: 100px;
-    }
-    #smoothnessSlider {
+@media screen and (max-width: 800px) {
+    aside {
         display: none;
+    }
+    #content{
+        width: 90%;
     }
 }

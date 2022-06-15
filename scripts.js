@@ -1,9 +1,9 @@
 
 let overlay = document.getElementById("overlay")
-window.addEventListener("load", ()=>{doThings(); console.log("loaded");overlay.style.opacity="0"})
+window.addEventListener("load", ()=>{main(); console.log("loaded");overlay.style.opacity="0"})
 
 // wrapes everthing so that the entire document is loaded before js runs
-function doThings(){
+function main(){
   var coll = document.getElementsByClassName("projectItem");
   var i;
 
@@ -26,25 +26,25 @@ function doThings(){
       selectedProject = this;
       var child = this.children[1]; // the collapsable
       var parent = this.parentElement; // the projectContainer
-      parent.style.width = "20%"; // makes all cards move to side
+      parent.style.width = "15%"; // makes all cards move to side
       this.style.width = "110%"; // make this card slightly wider
       let yPos = getYPos(parent)-getYPos(child); // gets the relative offset that would be the top of the projectContainer
       child.style.top = 0; // sets the collabsable to start at where its card is
       let maxHeight = document.getElementById("projectContainer").scrollHeight;
-      setTimeout(()=>{child.style.maxWidth="50vw"}, 700); // in 700ms make collabsable wide
+      console.log(`scroll height ${maxHeight}`)
+      if(isPhone){
+        console.log("phone")
+        child.style.width = "60vw"
+        setTimeout(()=>{child.style.maxWidth="60vw"}, 700); // in 700ms make collabsable wide
+      }else{
+        console.log("not phone")
+        child.style.width = "50vw"
+        setTimeout(()=>{child.style.maxWidth="50vw"}, 700); // in 700ms make collabsable wide
+      }
       setTimeout(()=>{child.style.maxHeight=`${maxHeight}px`; child.style.top=`${yPos}px`}, 1300);
     });
   }
 
-
-  let outerDiv = document.getElementById("outerPage");
-  let scroller = document.getElementById("scroller");
-
-  let mainDiv = document.getElementById("mainDiv");
-
-
-  let lastScroll = 0; // scroll value on the last frame
-  let smoothness = 20; // how much to smooth the scrolling higher is less smoothing, gets overridden by slider default value
 
   let isPhone;
   function checkSize(){
@@ -53,66 +53,21 @@ function doThings(){
     } else {
       isPhone = false;
     }
-    console.log(isPhone)
+    // console.log(isPhone)
   }
   checkSize()
   window.onresize = checkSize
 
-  let lastTick = performance.now()
-  function updateScroll(time){
-    let delta = time-lastTick
-    lastTick = time
-
-    idealScroll = -window.innerHeight/2-window.scrollY
-    if(!isPhone){
-      // interpolates between lastScroll and ideaScroll relative to delta
-      setScroll = lastScroll*(1-smoothness/delta)  +  idealScroll*(smoothness/delta);
-      outerDiv.style.transform = `translate(0%, ${setScroll}px)`;
-      lastScroll = setScroll;
-    }else{
-      outerDiv.style.transform = `translate(0%, ${idealScroll}px)`;
-    }
-    requestAnimationFrame(updateScroll)
-  }
-  requestAnimationFrame(updateScroll)
-
-
-  let sliderVal = document.getElementById("sliderVal")
-  let slider = document.getElementById("slider")
-  slider.oninput = function (){
-    sliderVal.innerHTML = this.value;
-    if(this.value == 0){
-      smoothness = 10;
-    }else{
-      smoothness = 10/this.value;
-    }
-    console.log(smoothness);
-}
-  sliderVal.innerHTML = slider.value;
-  smoothness = 10/slider.value;
-  console.log(smoothness);
-
   // https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file
   // embedes another html file
-  (() => {
-    const includes = document.getElementsByTagName('include');
-    [].forEach.call(includes, i => {
-        let filePath = i.getAttribute('src');
-        fetch(filePath).then(file => {
-            file.text().then(content => {
-                i.insertAdjacentHTML('afterend', content);
-                i.remove();
-                setDocHeight()
-            });
-        });
+  const includes = document.getElementsByTagName('include');
+  [].forEach.call(includes, i => {
+    let filePath = i.getAttribute('src');
+    fetch(filePath).then(file => {
+      file.text().then(content => {
+        i.insertAdjacentHTML('afterend', content);
+        i.remove();
+      });
     });
-  })();
-
-  function setDocHeight(){
-    const overallHeight = outerDiv.clientHeight;
-    // scroller.style.height = overallHeight;
-    scroller.style.height = overallHeight*1.1;
-    // console.log(mainDiv)
-    // console.log(overallHeight);
-  }
+  });
 }
