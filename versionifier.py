@@ -15,6 +15,8 @@ def createEntry(name, desc, loc):
     </div>
 </a>'''
 
+# outdir = "build/versions/"
+outdir = "versions/"
 def getReleases(repoName='oliverw10/ipt-portfolio'):
     # reponame as username/repo
     response = requests.get(f"https://api.github.com/repos/{repoName}/releases")
@@ -23,14 +25,14 @@ def getReleases(repoName='oliverw10/ipt-portfolio'):
 if __name__ == "__main__":
     releases = getReleases()
 
-    if os.path.exists("build/versions"):
-        shutil.rmtree('build/versions')
-    os.mkdir("build/versions")
+    if os.path.exists(outdir):
+        shutil.rmtree(outdir)
+    os.mkdir(outdir)
 
     for release in releases:
         print(release["tag_name"])
         print(release["name"])
-        release["outDir"] = f"build/versions/{release['tag_name']}"
+        release["outDir"] = f"{outdir}{release['tag_name']}"
 
         with open("temp.zip", "wb+") as f: # download version files (as zip)
             file = requests.get(release["zipball_url"], stream=True)
@@ -47,7 +49,7 @@ if __name__ == "__main__":
         
         os.remove("temp.zip")
 
-    with open("build/versions.html", "w+") as f:
+    with open(f"{outdir}../versions.html", "w+") as f:
         f.write(startCss)
         for ver in releases:
             f.write(createEntry(ver["tag_name"], ver["name"], f"versions/{ver['tag_name']}"))

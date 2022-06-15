@@ -8,7 +8,7 @@
 <body>
     <div id="overlay"></div>
     <header>
-        *logo*
+        <img src="images/logo.png" width="50px" height="50px">
         <h1 id="top">My portfolio</h1>
     </header>
     <hr>
@@ -26,42 +26,65 @@
                 <div class="projectItem noselect">
                     <div class="projectItemCard">Animation</div>
                     <div class="projectExpandable">
-                        <p>An animation</p>
-                        <img src="images/animation.gif">
-                        a<br>
-                        a<br>
-                        a<br>
-                        a<br>
+                        This is an animation created with <a href='https://pivotanimator.net/'>Pivot</a>, pivot is a tweening animator tool
+                        that allows for the manipulation of images and limbs on a stick figure.
+                        Tweening animations can be created significantly faster than Cel based animations but lose freedom
+                        in what can be created.
+                        Some other animation tools are:
+                        <ul>
+                            <li>Adobe Animate</li>
+                            <li>Sketchbook</li>
+                            <li>Doratoon</li>
+                        </ul>
+                        <img src="images/animation.gif" alt="an animation of a fisherman catching an orange fish and the text Magicarps den" title="Magicarp animation">
                     </div>
                 </div>
                 <div class="projectItem noselect">
-                    <div class="projectItemCard">Example 2</div>
-                    <div class="projectExpandable">More info on Example 2</div>
+                    <div class="projectItemCard">Audio</div>
+                    <div class="projectExpandable">Audacity was used to record and modify a sound. Sound is stored on a computer as a series of numbers representing the wave of the Sound
+                        , much like images this can be either stored either raw or compressed and at different qualities.
+                        <br>
+                        Original recorded sound:
+                        <img src="images/sound1.png">
+                        The sound was very quite so I used the amplyfy tool to make it louder,
+                         this tool has options for how much louder to make it and to allow clipping which is where
+                        the sound is louder than the maximum volume the file can store and it has to limit it, this produces a unpleasant sound.
+                        <img src="images/sound-dialog.png">
+                        Louder sound:
+                        <img src="images/sound2.png">
+                        Then a Reverb effect was added.
+                        <img src="images/sound3.png">
+                        <img>
+                        Then 
+                    </div>
                 </div>
                 <div class="projectItem noselect">
-                    <div class="projectItemCard">Example 3</div>
-                    <div class="projectExpandable">More info on Example 3</div>
+                    <div class="projectItemCard">Images</div>
+                    <div class="projectExpandable">Images are stored on computers as a matrix of pixels colours
+                        with colour being represented as a combination of red gree blue and sometimes transparency.
+                        This is often very large and so more tricks are used to save space.
+                        <br>
+                        One of these tricks is compression which is when the computer uses algorithms to store the 
+                        image more efficently, compression algorithms come in two types. Lossless where the image can be perfectly recreated
+                        and lossy where the image loses some details, often imperceptable.
+                        Another technique is storing less bits per pixel, however this results in far lower quality images and so a trick called 
+                        dithering can be used to make it seem like there are more colours than there really are.
+                        <div class="flex-center">
+                            <img src="images/dithering.png">
+                        </div>
+                    </div>
                 </div>
                 <div class="projectItem noselect">
-                    <div class="projectItemCard">Example 4</div>
-                    <div class="projectExpandable">More info on Example 4</div>
-                </div>
-                <div class="projectItem noselect">
-                    <div class="projectItemCard">Example 5</div>
-                    <div class="projectExpandable">More info on Example 5</div>
-                </div>
-                <div class="projectItem noselect">
-                    <div class="projectItemCard">Example 5</div>
-                    <div class="projectExpandable">More info on Example 5</div>
-                </div>
-                <div class="projectItem noselect">
-                    <div class="projectItemCard">Example 5</div>
-                    <div class="projectExpandable">More info on Example 5</div>
+                    <div class="projectItemCard">CAD</div>
+                    <div class="projectExpandable">CAD or computer aided design is used to design parts to make in the real world.
+                        This is similar to 3D modelling. I used the CAD program Onshape to create a part with text and a extruded rectangle
+                        <img src="images/cad.png" width="400px">
+                    </div>
                 </div>
             </div>
             <hr>
             <div class="timeline">
-                <h3 id="versions">Versions</h3>
+                <h2 id="versions">Versions</h2>
                 <include src="./versions.html">Loading...</include>
                 <!--
                 these are created by versionifier.py
